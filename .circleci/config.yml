@@ -37,6 +37,7 @@ jobs:
             docker push $DOCKER_LOGIN/oc_lettings
       - sentry/notify:
           environment: production
+          input_dsn: $SENTRY_DSN
           version: $CIRCLE_SHA1
           message: Deployment completed
 
