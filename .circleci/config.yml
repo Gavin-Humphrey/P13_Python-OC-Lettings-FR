@@ -1,0 +1,58 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@1.2.2
+  sentry: sentry/getsentry@1.1.0
+
+jobs:
+  build-and-test:
+    executor: python/default
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirements.txt" }}
+            - v1-dependencies-
+      - run: python -m venv venv
+      - run: . venv/bin/activate
+      - run: pip install -r requirements.txt
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+      - run:
+          name: Linting
+          command: |
+            flake8 --max-line-length=120 .
+      - run:
+          name: Pytest
+          command: |
+            pytest --cov=.
+      - run:
+          name: Containerize
+          command: |
+            docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+            docker build -t oc_lettings .
+            docker tag oc_lettings $DOCKER_LOGIN/oc_lettings
+            docker push $DOCKER_LOGIN/oc_lettings
+      - sentry/notify:
+          environment: production
+          version: $CIRCLE_SHA1
+          message: Deployment completed
+
+workflows:
+  build:
+    jobs:
+      - build-and-test
+#
+      filters:
+            branches:
+              only: master
+#
+executors:
+  python/default:
+    image: circleci/python:3.9.7-buster
+    working_directory: ~/repo
+
+
+
