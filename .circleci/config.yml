@@ -45,11 +45,7 @@ workflows:
   build:
     jobs:
       - build-and-test
-#
-      filters:
-            branches:
-              only: master
-#
+
 executors:
   python/default:
     image: circleci/python:3.9.7-buster
