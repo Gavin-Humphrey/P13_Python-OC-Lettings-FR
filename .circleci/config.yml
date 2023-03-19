@@ -48,5 +48,6 @@ workflows:
 
 executors:
   python/default:
-    image: circleci/python:3.9.7-buster
+    docker:
+      - image: circleci/python:3.9.7-buster
     working_directory: ~/repo
