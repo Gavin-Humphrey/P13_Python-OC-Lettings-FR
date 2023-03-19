@@ -35,11 +35,11 @@ jobs:
             docker build -t oc_lettings .
             docker tag oc_lettings $DOCKER_LOGIN/oc_lettings
             docker push $DOCKER_LOGIN/oc_lettings
-      - sentry/notify:
-          environment: production
-          input_dsn: $SENTRY_DSN
-          version: $CIRCLE_SHA1
-          message: Deployment completed
+      # - sentry/notify:
+      #     environment: production
+      #     input_dsn: $SENTRY_DSN
+      #     version: $CIRCLE_SHA1
+      #     message: Deployment completed
 
 workflows:
   build:
