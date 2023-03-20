@@ -2,8 +2,6 @@ from django.shortcuts import render
 from .models import Profile
 
 
-
-
 def index(request):
     """
     Sed placerat quam in pulvinar commodo. Nullam laoreet consectetur ex, 
@@ -11,8 +9,8 @@ def index(request):
     pharetra, massa dolor cursus neque, quis dictum lacus d
     """
     profiles_list = Profile.objects.all()
-    context = {'profiles_list': profiles_list}
-    return render(request, 'profiles/index.html', context)
+    context = {"profiles_list": profiles_list}
+    return render(request, "profiles/index.html", context)
 
 
 def profile(request, username):
@@ -24,5 +22,5 @@ def profile(request, username):
     senectus et netus et males
     """
     profile = Profile.objects.get(user__username=username)
-    context = {'profile': profile}
-    return render(request, 'profiles/profile.html', context)
+    context = {"profile": profile}
+    return render(request, "profiles/profile.html", context)

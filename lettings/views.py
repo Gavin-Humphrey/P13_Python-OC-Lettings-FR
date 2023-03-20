@@ -2,8 +2,6 @@ from django.shortcuts import render
 from .models import Letting
 
 
-
-
 def index(request):
     """
     Aenean leo magna, vestibulum et tincidunt fermentum, consectetur 
@@ -12,8 +10,8 @@ def index(request):
     orci luctus et ultrices posuere cubilia curae; Cras eget scelerisque
     """
     lettings_list = Letting.objects.all()
-    context = {'lettings_list': lettings_list}
-    return render(request, 'lettings/index.html', context)
+    context = {"lettings_list": lettings_list}
+    return render(request, "lettings/index.html", context)
 
 
 def letting(request, letting_id):
@@ -33,8 +31,7 @@ def letting(request, letting_id):
     """
     letting = Letting.objects.get(id=letting_id)
     context = {
-        'title': letting.title,
-        'address': letting.address,
+        "title": letting.title,
+        "address": letting.address,
     }
-    return render(request, 'lettings/letting.html', context)
-    
+    return render(request, "lettings/letting.html", context)
