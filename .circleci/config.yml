@@ -10,11 +10,18 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "requirements.txt" }}
             - v1-dependencies-
+      
+      - run:
+        name: Remove existing venv directory
+        command: |
+          rm -rf venv
+
       - run:
           name: Set up Python virtual environment
           command: |
             python -m venv venv
             . venv/bin/activate
+
       - run:
           name: Install Python dependencies
           command: |
