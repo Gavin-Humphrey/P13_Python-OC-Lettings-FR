@@ -44,14 +44,14 @@ jobs:
       - checkout
       - docker/check
       - docker/build:
-          image: $DOCKER_LOGIN/oc_lettings
-          extra_build_args: "-t $DOCKER_LOGIN/oc_lettings"
+          image: $DOCKER_LOGI/oc_letting
+          extra_build_args: "-t $DOCKER_LOGI/oc_letting"
           tag: $CIRCLE_SHA1
       - docker/push:
-          image: $DOCKER_LOGIN/oc_lettings
+          image: $DOCKER_LOGI/oc_letting
           tag: "latest"
       - docker/push:
-          image: $DOCKER_LOGIN/oc_lettings
+          image: $DOCKER_LOGI/oc_letting
           tag: $CIRCLE_SHA1
 
 workflows:
