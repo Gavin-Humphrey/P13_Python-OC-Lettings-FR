@@ -44,7 +44,7 @@ jobs:
       - run:
           name: Login to Docker Hub
           command: |
-            echo $DOCKER_LOGIN | docker login --username=$DOCKER_USERNAME --password-stdin
+            echo $DOCKER_LOGIN | docker login --username=$DOCKER_USERNAME --password=$DOCKER_LOGIN
       - run:
           name: Containerize
           command: |
