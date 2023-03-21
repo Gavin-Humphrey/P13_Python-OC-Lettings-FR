@@ -32,17 +32,12 @@ jobs:
           command: |
             flake8 --max-line-length=120 .
       - run:
-          name: Pytest
-          command: |
-            . venv/bin/activate
-            pytest
-      - run:
           name: Containerize
           command: |
-            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_LOGIN --password-stdin
             docker build -t oc_lettings .
-            docker tag oc_lettings $DOCKER_LOGIN/oc_lettings:$CIRCLE_SHA1
-            docker push $DOCKER_LOGIN/oc_lettings:$CIRCLE_SHA1
+            docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+            docker tag oc_lettings $DOCKER_LOGIN/oc_lettings
+            docker push $DOCKER_LOGIN/oc_lettings
       - run:
           name: Notify Sentry of deployment
           command: |
@@ -51,6 +46,10 @@ jobs:
             -H "Authorization: Bearer $SENTRY_AUTH_TOKEN" \
             -d "{\"version\": \"$CIRCLE_SHA1\"}" \
             "https://sentry.io/api/0/projects/openclassrooms-rj/oc_lettings/releases/"
+      - run:
+          name: Pytest
+          command: |
+            docker run --rm $DOCKER_LOGIN/oc_lettings
 
 workflows:
   build:
