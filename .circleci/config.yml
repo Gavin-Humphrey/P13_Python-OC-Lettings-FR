@@ -32,24 +32,27 @@ jobs:
           command: |
             flake8 --max-line-length=120 .
       - run:
-          name: Containerize
-          command: |
-            docker build -t oc_lettings .
-            docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
-            docker tag oc_lettings $DOCKER_LOGIN/oc_lettings
-            docker push $DOCKER_LOGIN/oc_lettings
-      - run:
-          name: Notify Sentry of deployment
-          command: |
-            curl -X POST \
-            -H 'Content-Type: application/json' \
-            -H "Authorization: Bearer $SENTRY_AUTH_TOKEN" \
-            -d "{\"version\": \"$CIRCLE_SHA1\"}" \
-            "https://sentry.io/api/0/projects/openclassrooms-rj/oc_lettings/releases/"
-      - run:
           name: Pytest
           command: |
-            docker run --rm $DOCKER_LOGIN/oc_lettings
+            . venv/bin/activate
+            pytest
+  build_push_docker_hub:
+    docker:
+      - image: cimg/python:3.9.7-buster
+    steps:
+      - setup_remote_docker
+      - checkout
+      - docker/check
+      - docker/build:
+          image: $DOCKER_LOGIN/oc_lettings
+          extra_build_args: "-t $DOCKER_LOGIN/oc_lettings"
+          tag: $CIRCLE_SHA1
+      - docker/push:
+          image: $DOCKER_LOGIN/oc_lettings
+          tag: "latest"
+      - docker/push:
+          image: $DOCKER_LOGIN/oc_lettings
+          tag: $CIRCLE_SHA1
 
 workflows:
   build:
