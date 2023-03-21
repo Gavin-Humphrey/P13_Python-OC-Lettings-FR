@@ -38,8 +38,13 @@ jobs:
             pytest
       - setup_remote_docker
       - run:
+          name: Check DOCKER_LOGIN
+          command: |
+            echo $DOCKER_LOGIN
+      - run:
           name: Login to Docker Hub
-          command: docker login --username=$DOCKER_USERNAME --password=$DOCKER_LOGIN
+          command: |
+            echo $DOCKER_LOGIN | docker login --username=$DOCKER_USERNAME --password-stdin
       - run:
           name: Containerize
           command: |
