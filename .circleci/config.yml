@@ -39,7 +39,7 @@ jobs:
       - run:
           name: Containerize
           command: |
-            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_LOGIN --password-stdin
+            docker login --username $DOCKER_LOGIN --password "$DOCKER_PASSWORD"
             docker build -t oc_lettings .
             docker tag oc_lettings $DOCKER_LOGIN/oc_lettings:$CIRCLE_SHA1
             docker push $DOCKER_LOGIN/oc_lettings:$CIRCLE_SHA1
