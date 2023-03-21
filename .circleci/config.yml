@@ -44,8 +44,8 @@ jobs:
       - run:
           name: Login to Docker Hub
           command: |
-            docker login --username=gavindockerhub --password=dckr_pat_ZWyaGuH2oMs5srHgGRa-
-eE8wSKI
+            docker login --username="gavindockerhub" --password="dckr_pat_ZWyaGuH2oMs5srHgGRa-
+eE8wSKI"
       - run:
           name: Containerize
           command: |
