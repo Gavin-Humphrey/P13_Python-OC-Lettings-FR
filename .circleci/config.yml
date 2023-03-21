@@ -42,6 +42,10 @@ jobs:
           command: |
             echo $DOCKER_LOGIN
       - run:
+          name: Check DOCKER_USERNAME
+          command: |
+            echo $DOCKER_USERNAME
+      - run:
           name: Login to Docker Hub
           command: |
             echo "DOCKER_LOGIN: $DOCKER_LOGIN"
