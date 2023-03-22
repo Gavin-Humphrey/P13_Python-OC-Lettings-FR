@@ -56,14 +56,6 @@ jobs:
             docker build -t oc_lettings .
             docker tag oc_lettings $DOCKER_USERNAME/oc_lettings
             docker push $DOCKER_USERNAME/oc_lettings
-      - run:
-          name: Notify Sentry of deployment
-          command: |
-            curl -X POST \
-            -H 'Content-Type: application/json' \
-            -H "Authorization: Bearer $SENTRY_AUTH_TOKEN" \
-            -d "{\"version\": \"$CIRCLE_SHA1\"}" \
-            "https://sentry.io/api/0/projects/openclassrooms-rj/oc_lettings/releases/"
 
 workflows:
   build:
