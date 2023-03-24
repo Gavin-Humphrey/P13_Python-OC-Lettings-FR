@@ -58,7 +58,7 @@ jobs:
             docker push $DOCKER_USERNAME/oc_lettings
 
   deploy-to-heroku:
-    machine: true
+    machine: false
     steps:
       - checkout
       - run:
