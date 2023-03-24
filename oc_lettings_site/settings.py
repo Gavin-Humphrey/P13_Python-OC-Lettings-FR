@@ -1,5 +1,4 @@
 import os
-from webbrowser import get
 from django.core.management.utils import get_random_secret_key
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
