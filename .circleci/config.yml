@@ -58,10 +58,10 @@ jobs:
             docker push $DOCKER_USERNAME/oc_lettings
 
   deploy-to-heroku:
-      machine: true
-      steps:
-        - checkout
-        - run:
+    machine: true
+    steps:
+      - checkout
+      - run:
           name: Build and push Docker image to Heroku
           command: |
             sudo curl https://cli-assets.heroku.com/install.sh | sh
