@@ -4,6 +4,7 @@ jobs:
   build-and-test:
     docker:
       - image: circleci/python:3.9.7-buster
+    resource_class: small
     steps:
       - checkout
       - restore_cache:
@@ -58,7 +59,9 @@ jobs:
             docker push $DOCKER_USERNAME/oc_lettings
 
   deploy-to-heroku:
-    machine: false
+    machine:  
+      image: ubuntu-2004:current
+    resource_class: medium
     steps:
       - checkout
       - run:
