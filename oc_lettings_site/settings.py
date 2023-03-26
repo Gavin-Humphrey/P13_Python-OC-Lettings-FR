@@ -12,11 +12,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY", default=get_random_secret_key())
+HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (bool, False)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', f'{os.environ.get("HEROKU_APP_NAME")}.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', f'{HEROKU_APP_NAME}.herokuapp.com']
 
 
 # Application definition
