@@ -75,3 +75,82 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+
+## **CI/CD (Intégration continue et déploiement continu)**
+ ### **Conditions préalables**
+  - Python 3.9.x ou supérieur
+  - Docker pour la conteneurisation
+  - CircleCI pour l'intégration/le développement continu
+  - Sentry pour le suivi des erreurs
+  - Heroku pour le déploiement
+
+ ### **Développement local depuis Dockerhub**
+
+  Pour exécuter l'application localement à l'aide de Docker, procédez comme suit :
+
+  - Téléchargez et installez docker.
+  - Construisez votre image docker avec : `docker build -t image .`
+  - Exécutez un conteneur docker avec : `docker run -d --name your-container-name -p 8000:8000 your-image-name`
+
+  Il est également possible d'utiliser docker pull pour extraire l'image pré-construite de Dockerhub à l'aide de la commande suivante :
+  docker pull <nom-image>
+  Pour ce projet, l'image Docker est disponible sur `docker pull oc_lettings`
+  Après avoir extrait l'image, vous pouvez exécuter le conteneur à l'aide de la commande suivante :
+  `docker run -d --name oc_lettings -p 8000:8000 oc_lettings`.
+
+  Accédez à http://localhost:8000 dans votre navigateur Web pour accéder à l'application
+
+  ### **CercleCI**
+  Ce projet utilise CircleCI pour l'intégration continue.
+  La configuration de CircleCI se trouve dans le fichier `.circleci/config.yml`.
+
+  #### **Pour configurer CircleCI pour votre propre projet, suivez ces étapes :**
+
+  Créez un compte CircleCI et connectez votre compte GitHub
+  Créez un nouveau projet et sélectionnez votre répositoire GitHub
+  Ajoutez les variables d'environnement requises aux paramètres du projet CircleCI :
+  **DOCKER_USERNAME** : votre nom d'utilisateur Docker Hub
+  **DOCKER_LOGIN** : Votre e-mail de connexion Docker Hub
+  **HEROKU_APP_NAME** : le nom de votre application Heroku
+  **HEROKU_TOKEN** : Votre clé API Heroku
+  Poussez un nouveau commit vers votre répositoire pour déclencher un nouveau build sur CircleCI
+
+  ### **Sentry**
+  Ce projet utilise Sentry pour le suivi des erreurs. La configuration de Sentry se trouve dans le fichier settings.py.
+
+  #### **Pour configurer Sentry pour votre propre projet, procédez comme suit :**
+
+  Créez un compte Sentry et créez un nouveau projet
+
+  Ajoutez la variable d'environnement SENTRY_DSN au fichier .env de votre projet
+
+  Installez le package Python sentry-sdk : `pip install sentry-sdk`
+
+  Ajoutez le code généré au fichier settings.py 
+
+  ### **Déploiement sur Heroku**
+
+  #### **Pour déployer l'application sur Heroku, procédez comme suit :**
+
+  - Créer une nouvelle application `Heroku` dans le tableau de bord Heroku
+
+  - Ajoutez les variables d'environnement **DATABASE_URL** et **SECRET_KEY** aux paramètres de votre application
+
+  - Ajoutez la remote Heroku Git à votre répositoire local : heroku git:remote -a your-heroku-app-name
+
+  - Poussez l'application vers Heroku à l'aide du registre de conteneurs Heroku :
+
+  conteneur heroku : `connexion`
+
+  conteneur heroku : `push -a web nom-de-l-application-heroku`
+
+  conteneur heroku : `release -a web nom-de-l-application-heroku`
+
+  Votre application devrait maintenant être déployée et accessible sur https://your-heroku-app-name.herokuapp.com
+
+### **Auteurs**
+
+  - **`Openclassrooms`**
+  - **`Gavin Humphrey`**
+
