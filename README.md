@@ -1,3 +1,5 @@
+![Getting Started](img/oc_lettings_logo_dark.png)
+
 ## Résumé
 
 Site web d'Orange County Lettings
