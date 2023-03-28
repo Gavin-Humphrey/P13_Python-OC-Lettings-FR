@@ -1,4 +1,4 @@
-                                                 ![Getting Started](img/oc_lettings_logo_dark.png)
+   ![Getting Started](img/oc_lettings_logo_dark.png)
 
 ## Résumé
 
