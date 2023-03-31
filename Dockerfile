@@ -18,6 +18,10 @@ COPY . /code/
 
 RUN python manage.py collectstatic --noinput
 
+# add and run as non-root user
+RUN adduser -D myuser
+USER myuser
+
 # Expose the required ports
 EXPOSE $PORT
 

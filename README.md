@@ -81,25 +81,27 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 ## **CI/CD (Intégration continue et déploiement continu)**
  ### **Conditions préalables**
-  - Python 3.9.x ou supérieur
-  - Docker pour la conteneurisation
-  - CircleCI pour l'intégration/le développement continu
-  - Sentry pour le suivi des erreurs
-  - Heroku pour le déploiement
+  
+  - [Python](https://www.python.org/doc/) 3.9.x ou supérieur
+  - [Github](https://docs.github.com/en/desktop) compte 
+  - [Docker](https://docs.docker.com/get-docker/) pour la conteneurisation
+  - [CircleCI](https://circleci.com/developer) pour l'intégration/le développement continu
+  - [Sentry](https://sentry.io/welcome/) pour le suivi des erreurs
+  - [Heroku](https://devcenter.heroku.com/) pour le déploiement
 
  ### **Développement local depuis Dockerhub**
 
   Pour exécuter l'application localement à l'aide de Docker, procédez comme suit :
 
-  - Téléchargez et installez docker.
+  - Téléchargez et installez [Docker](https://docs.docker.com/get-docker/).
   - Construisez votre image docker avec : `docker build -t image .`
   - Exécutez un conteneur docker avec : `docker run -d --name your-container-name -p 8000:8000 your-image-name`
 
   Il est également possible d'utiliser docker pull pour extraire l'image pré-construite de Dockerhub à l'aide de la commande suivante :
   docker pull <nom-image>
-  Pour ce projet, l'image Docker est disponible sur `docker pull oc_lettings`
+  Pour ce projet, l'image Docker est disponible sur [docker-pull-oc_lettings](https://hub.docker.com/r/gavindockerhub/oc_lettings/tags)
   Après avoir extrait l'image, vous pouvez exécuter le conteneur à l'aide de la commande suivante :
-  `docker run -d --name oc_lettings -p 8000:8000 oc_lettings`.
+  `docker run -p 8000:8000 gavindockerhub/oc_lettings:latest`.
 
   Accédez à http://localhost:8000 dans votre navigateur Web pour accéder à l'application
 
@@ -109,7 +111,7 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
   #### **Pour configurer CircleCI pour votre propre projet, suivez ces étapes :**
 
-  Créez un compte CircleCI et connectez votre compte GitHub
+  Créez un compte [CircleCI](https://circleci.com/developer) et connectez votre compte GitHub
   Créez un nouveau projet et sélectionnez votre répositoire GitHub
   Ajoutez les variables d'environnement requises aux paramètres du projet CircleCI :
   **DOCKER_USERNAME** : votre nom d'utilisateur Docker Hub
@@ -123,7 +125,7 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
   #### **Pour configurer Sentry pour votre propre projet, procédez comme suit :**
 
-  Créez un compte Sentry et créez un nouveau projet
+  Créez un compte [Sentry](https://sentry.io/welcome/) et créez un nouveau projet
 
   Ajoutez la variable d'environnement SENTRY_DSN au fichier .env de votre projet
 
@@ -135,7 +137,7 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
   #### **Pour déployer l'application sur Heroku, procédez comme suit :**
 
-  - Créer une nouvelle application `Heroku` dans le tableau de bord Heroku
+  - Créer une nouvelle application [Heroku](https://devcenter.heroku.com/) dans le tableau de bord Heroku
 
   - Ajoutez les variables d'environnement **DATABASE_URL** et **SECRET_KEY** aux paramètres de votre application
 
