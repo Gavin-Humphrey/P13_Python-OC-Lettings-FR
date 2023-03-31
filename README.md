@@ -1,4 +1,4 @@
-![Getting Started](img/oc_lettings_logo_dark.png)
+   ![Getting Started](img/oc_lettings_logo_dark.png)
 
 ## Résumé
 
@@ -81,9 +81,14 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 ## **CI/CD (Intégration continue et déploiement continu)**
  ### **Conditions préalables**
+<<<<<<< HEAD
   
   - [Python](https://www.python.org/doc/) 3.9.x ou supérieur
   - [Github](https://docs.github.com/en/desktop) compte 
+=======
+  - [Python](https://www.python.org/doc/) 3.9.x ou supérieur
+  - [Github](https://docs.github.com/en/desktop) compte
+>>>>>>> 0774d007c110375283822d15bf570e2bd1a2df5c
   - [Docker](https://docs.docker.com/get-docker/) pour la conteneurisation
   - [CircleCI](https://circleci.com/developer) pour l'intégration/le développement continu
   - [Sentry](https://sentry.io/welcome/) pour le suivi des erreurs
@@ -93,7 +98,11 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
   Pour exécuter l'application localement à l'aide de Docker, procédez comme suit :
 
+<<<<<<< HEAD
   - Téléchargez et installez [Docker](https://docs.docker.com/get-docker/).
+=======
+  - Téléchargez et installez [docker](https://docs.docker.com/get-docker/) .
+>>>>>>> 0774d007c110375283822d15bf570e2bd1a2df5c
   - Construisez votre image docker avec : `docker build -t image .`
   - Exécutez un conteneur docker avec : `docker run -d --name your-container-name -p 8000:8000 your-image-name`
 
