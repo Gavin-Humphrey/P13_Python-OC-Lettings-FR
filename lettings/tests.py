@@ -5,6 +5,7 @@ from .models import Address, Letting
 
 
 class TestLetting(TestCase):
+
     def setUp(self):
         address = Address.objects.create(
             number=1,
