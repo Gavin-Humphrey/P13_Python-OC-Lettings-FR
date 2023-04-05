@@ -101,6 +101,7 @@ Utilisation de PowerShell, comme ci-dessus sauf :
   Pour ce projet, l'image Docker est disponible sur [docker-pull-oc_lettings](https://hub.docker.com/r/gavindockerhub/oc_lettings/tags)
   Après avoir extrait l'image, vous pouvez exécuter le conteneur à l'aide de la commande suivante :
   `docker run -d -e PORT=8000 -p 8000:8000 gavindockerhub/oc_lettings:latest`.
+  
   Vous pouvez également docker [pull](https://hub.docker.com/r/gavindockerhub/oc_lettings/tags) et run l'image ici avec un simple ligne de commande :
   `docker run --pull always -e PORT=8000 -p 8000:8000 --name oc_lettings gavindockerhub/oc_lettings:latest`.
 
