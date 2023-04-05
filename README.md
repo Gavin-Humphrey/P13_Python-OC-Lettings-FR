@@ -109,7 +109,7 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
   ### **CercleCI**
   Ce projet utilise CircleCI pour l'intégration continue.
-  La configuration de CircleCI se trouve dans le fichier `.circleci/config.yml`.
+  La configuration de CircleCI se trouve dans le fichier `.circleci/config.yml`
 
   #### **Pour configurer CircleCI pour votre propre projet, suivez ces étapes :**
 
